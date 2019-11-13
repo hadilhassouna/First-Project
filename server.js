@@ -32,32 +32,42 @@ const bodyParser = require ("body-parser");
 
 // // require('dotenv').config();
 const app = express();
+
+
+
 app.use(express.static(__dirname + "/client/dist"));
+app.use(express.static(__dirname+"/client/src/components"))
 // //Config DB 
 const URI = require("./config/keys").mongoURI;
 console.log(URI)
-mongoose.connect(URI, {useNewUrlParser: true});
+mongoose.connect(URI, { autoIndex: false });
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
- // we're connected!
  console.log(" we're connected");
 });
+
 app.use(bodyParser.json());
 const Item = require("./models/item.js").Item;
-app.get("/", (req, res) => {
+const Imgs = require("./models/item.js").Imgs;
+
+app.get("/imgs", (req, res) => {
  // res.send("Home Page")
- Item.find()
-    .sort({ date:-1 })
-    .then(items => res.json(items));
+ Imgs.find()
+    .then(Imgs => res.json(Imgs));
 })
+
+
 app.post("/items", (req, res) => {
  const newItem = Item({ name: req.body.name})
  newItem.save().then(item => res.json(item));
 })
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log("server started on port" + port));
+app.listen(port, () => {
+console.log("server started on port" + port)});
+
+
 
 // app.use(bodyParser.json());
 // const Item = require ("./models/item.js").Item;

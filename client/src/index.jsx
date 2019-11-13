@@ -1,11 +1,23 @@
 
-ReactDOM.render(<App />, document.getElementById('app'));
-import React, { Components } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import App from "./components/y.jsx"
 
-// import $ from 'jquery';
 
-// const App = (props) => <TopTen />;
+class Main extends Component {
 
-ReactDOM.render(<App />, document.getElementById('app'));
+    constructor(props){
+        super(props)
+    }
 
+    
+    render(){
+        return (
+            <div>
+                <App />
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(<Main></Main>,document.getElementById("app"))
