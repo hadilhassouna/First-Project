@@ -35,6 +35,7 @@ const app = express();
 app.use(express.static(__dirname + "/client/dist"));
 // //Config DB 
 const URI = require("./config/keys").mongoURI;
+console.log(URI)
 mongoose.connect(URI, {useNewUrlParser: true});
 
 var db = mongoose.connection;

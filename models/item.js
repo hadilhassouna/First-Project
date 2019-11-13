@@ -2,9 +2,8 @@ const mongoose = require ("mongoose");
 const Schema = mongoose.Schema;
 
 const Items =  new Schema ({
-    name: { type: String, required: true },
-    time: { type: [String], required: true },
-    rating: { type: Number, required: true },
+    name:  String ,
+    time: String ,
     image :String,
     imgInfo:String,
     userName:{type:String, unique:true},
@@ -22,17 +21,26 @@ const Items =  new Schema ({
 const Item = mongoose.model("item", Items);
 var s1 = new Item({
     image:"l",
-    imgInfo:"something",
-    userName:"hadil",
-    userId:1111111,
+    imgInfo:"hadil",
+    userName:"hasamardil",
+    userId:45445,
     userRelatedWorks:"Something",
     worksId:33455,
-    views:22222,
+    views:33333,
     progilePicReviews:"Something"
 
     
 
 })
-s1.save()
+
+s1.save((error,result)=>{
+if(error){
+    console.log("err")
+}else{
+    console.log("don")
+}
+
+});
+
 
 module.exports.Items=Items;
