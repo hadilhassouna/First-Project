@@ -11,6 +11,7 @@ class App extends Component  {
          
         };
     }
+    
    
 componentDidMount(){
     var that = this;
@@ -45,4 +46,6 @@ componentDidMount(){
     }
 }          
 
-export default App
+
+export default App;
+

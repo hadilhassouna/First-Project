@@ -51,6 +51,10 @@ db.once('open', function() {
 app.use(bodyParser.json());
 const Item = require("./models/item.js").Item;
 const Imgs = require("./models/item.js").Imgs;
+const rev = require("./models/item.js").rev;
+const userinfo = require("./models/item.js").Userinfo;
+
+
 
 app.get("/imgs", (req, res) => {
  // res.send("Home Page")
@@ -58,7 +62,22 @@ app.get("/imgs", (req, res) => {
     .then(Imgs => res.json(Imgs));
 })
 
+app.get("/userinfo", (req, res) => {
+    // res.send("Home Page")
+    userinfo.find({})
+       .then(Userinfo => res.json(Userinfo));
+   })
 
+   app.get("/Reviewers", (req, res) => {
+console.log("he**************************************************************************")
+    // res.send("Home Page")
+    rev.find({})
+       .then(Userinfo =>{ 
+           console.log("fffffff",Userinfo)
+            res.json(Userinfo)});
+        
+      
+   })
 app.post("/items", (req, res) => {
  const newItem = Item({ name: req.body.name})
  newItem.save().then(item => res.json(item));
