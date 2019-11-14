@@ -21,6 +21,7 @@ componentDidMount(){
         success:function(data){
         //   console.log(data);
           that.setState({data:data})
+          this.state.data[0].img.projectId
           console.log(that.state.data)
           
         },
@@ -33,7 +34,7 @@ componentDidMount(){
     render(){
         const listItems = this.state.data.map((img) =>
         <li>
-        <img src={img.url}></img>
+        <img projectId={img.projectId=1} src={img.url}></img>
         <p >{img.imgInfo}</p>
         </li>
       );
