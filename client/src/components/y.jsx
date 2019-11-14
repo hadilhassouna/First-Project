@@ -11,6 +11,7 @@ class App extends Component  {
          
         };
     }
+    
    
 componentDidMount(){
     var that = this;
@@ -34,7 +35,7 @@ componentDidMount(){
     render(){
         const listItems = this.state.data.map((img) =>
         <li>
-        <img projectId={img.projectId=1} src={img.url}></img>
+        <img src={img.url}></img>
         <p >{img.imgInfo}</p>
         </li>
       );
@@ -46,4 +47,6 @@ componentDidMount(){
     }
 }          
 
-export default App
+
+export default App;
+

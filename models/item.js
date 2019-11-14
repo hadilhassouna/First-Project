@@ -38,7 +38,7 @@ const img =  new Schema ({
 const others =  new Schema ({
    
     itemid:Number,
-    url:String,
+    ip:String,
     projectName:String
 });
 
@@ -51,7 +51,7 @@ const Userinfo = mongoose.model("userinfo", userinfo);
 const others1 =  new Others ({
    
     itemid:1,
-    url:"String",
+    ip:"String",
     projectName:"String"
 });
 
